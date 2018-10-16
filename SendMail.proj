@@ -1,0 +1,24 @@
+<Project DefaultTarget="SendMail" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+
+  <PropertyGroup>
+    <SendMail>"$(MSBuildProjectDirectory)\..\..\Mail Send\SendMail.exe"</SendMail>
+    <MailServerName>mail.prophoenix.com</MailServerName>
+    <FromMailID>fayaz@prophoenix.com</FromMailID>
+        <ToMailID>sritharan@prophoenix.com</ToMailID>
+    <Subject>Build Successfully completed in 192.168.14.45 Server</Subject>
+    <Body>Dear All,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                This is to inform you that build has successfully completed in 192.168.14.45 server for Police RMS, Fire RMS, CAD, NCIC and Job Server.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             This is a system generated e-mail. Please dont reply.</Body>
+    
+  </PropertyGroup>
+
+  <Target Name="SendMail" >
+
+    <Exec Command="$(SendMail) /smtpserver $(MailServerName) /from $(ToMailID) /to $(FromMailID) /subject $(Subject) /body $(Body) " ContinueOnError= 'false' />
+
+
+  </Target>
+
+
+
+
+</Project>
